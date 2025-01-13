@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Form</title>
+    <style>
+
+
+      body {
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+          background-color: #f0f0f0;
+      }
+
+      header {
+          background-color: #ddd;
+          padding: 10px 0;
+          text-align: center;
+      }
+
+      .container {
+          margin: 20px auto;
+          padding: 10px;
+          max-width: 500px;
+          background-color: white;
+          border: 1px solid #ccc;
+      }
+
+      .form-label {
+          font-weight: bold;
+          margin-top: 10px;
+          display: block;
+      }
+
+      .error {
+          color: red;
+          font-size: 12px;
+      }
+
+      button {
+          background-color: #ccc;
+          color: black;
+          padding: 5px 10px;
+          border: 1px solid #999;
+          cursor: pointer;
+          font-size: 14px;
+      }
+
+      button:hover {
+          background-color: #bbb;
+      }
+
+     
+
+      #clock {
+          font-size: 12px;
+          color: #333;
+          font-size: large;
+      }
+
+
+      #name{
+        width: 33%;
+      }
+
+
+  </style>
+
+
+    
+<script>
+
+
+  var mytime = setInterval(myTimer, 1000);
+
+  function myTimer() {
+      var d = new Date();
+      document.getElementById("clock").innerHTML = d.toLocaleTimeString() +
+          " " + d.getDate() + '-' + (d.getMonth() + 1) + '-' + d.getFullYear();
+
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+  // Validate Name
+  function validateName() {
+      var nameInput = document.getElementById("name").value;
+      var colorname = document.getElementById("name") ;
+      var errorElement = document.getElementById("nameError");
+      if (nameInput == "") {
+          errorElement.innerHTML = "Name cannot be empty.";
+          return false ;
+      } else {
+          colorname.style.border = "4px solid green";
+          return true ;
+
+      }
+  }
+
+
+
+
+
+  // Validate Email
+  function validateEmail() {
+      var emailInput = document.getElementById("email").value;
+      var errorElement = document.getElementById("emailError");
+      var coloremail = document.getElementById("email") ;
+
+      if (emailInput == "") {
+          errorElement.innerHTML = "Email cannot be empty.";
+          return false ;
+
+      }else{
+          coloremail.style.border = "4px solid green";
+          return true ;
+
+      } 
+
+  }
+
+
+
+
+
+
+  function validateAge(){
+  var Agenumber = document.getElementById("age").value;
+  var AgeError = document.getElementById("AgeError") ;
+
+      if(Agenumber < 18 || Agenumber > 60){
+          AgeError.innerHTML = "the Age is not valid" ; 
+          return false ;
+
+      }
+      return true ;
+
+  }
+
+
+
+  function validatequantity(){
+  var quantity = document.getElementById("quantity").value;
+  var quantityError = document.getElementById("quantityError") ;
+
+      if(quantity < 1){
+          quantityError.innerHTML = "you must at least take 1 item" ;
+          return false ;
+
+      }
+      return true ;
+
+  }
+
+  
+
+
+  function validateincome(){
+  var income = document.getElementById("income").value;
+  var incomeError = document.getElementById("incomeError") ;
+
+      if(income <= 400){
+          incomeError.innerHTML = "the income at least should be 400 sorry" ; 
+          return false ;
+
+      }
+      return true ;
+
+  }
+
+
+
+
+
+  // Validate Gender
+  function validateGender() {
+
+      var male = document.getElementById("male").checked;
+       var female = document.getElementById("female").checked;
+      var errorElement = document.getElementById("genderError");
+       if (!male &&  !female) {
+          errorElement.innerHTML = "Please select your gender.";
+          return false ;
+
+      } else {
+           errorElement.innerHTML = "";
+           return true ;
+
+      }
+
+  }
+
+
+
+  function calculateTotal() {
+  var quantity = document.getElementById("quantity").value;
+  var unitPrice = 25; 
+  if (quantity >= 1) {
+  var total = quantity * unitPrice;
+     return total ; 
+  }
+  }
+
+
+      
+
+  function generateReport(){
+
+      
+
+
+
+    var name = document.getElementById("name").value ;  
+    var email = document.getElementById("email").value ;  
+    var age = document.getElementById("age").value ;
+    var quantity = document.getElementById("quantity").value ;
+    var income = document.getElementById("income").value ;
+    var total = calculateTotal()
+
+      
+
+
+      var report = "Name: " + name + "\n";
+      report += "Email: " + email + "\n";
+      report += "Age: " + age + "\n";
+      report += "Quantity: " + quantity + "\n";
+      report += "Income: " + income + "\n";
+      report += "Total: $" + total + "\n";
+    
+
+
+      document.getElementById("all").value = report;
+
+   
+
+  }
+
+
+
+
+
+
+
+  // Validate Interests
+  
+
+  // Submit Form
+  function submitForm() {
+      validateName();
+      validateEmail();
+      validateAge();
+      validatequantity();
+      validateincome() ;
+      validateGender();
+      
+  if(validateName() && validateEmail() &&  validateAge() && validatequantity() &&  validateincome() &&validateGender()){
+
+      generateReport() ; 
+
+      }
+     
+
+      
+  }
+
+
+  
+  </script>
+
+
+
+
+
+
+
+</head>
+<body>
+    <header>
+        <div>
+            <h1 style="background-color: rgb(10, 154, 250);">Sign Up Form</h1>
+            <div id="clock"></div>
+        </div>
+    </header>
+    <div class="container">
+        <form id="signUpForm">
+            <!-- Name Section -->
+
+
+
+
+            <div class="m">
+                <label for="name" class="form-label">Full Name</label>
+                <input type="text" id="name" name="name" value="" onchange="validateName()" />
+                <span id="nameError" class="error"></span>
+            </div>
+
+
+
+
+
+
+
+            <!-- Email Section -->
+            <div class="m">
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" id="email" name="email" value="" onchange="validateEmail()" />
+                <span id="emailError" class="error"></span>
+            </div>
+
+
+
+
+
+
+
+
+
+
+            <!-- Age Section -->
+            <div class="m">
+                <label for="age" class="form-label">Age</label>
+                <input type="number" id="age" name="age" value="" onchange="validateAge()" />
+                <span id="AgeError" class="error"></span>
+            </div>
+
+
+
+
+
+
+
+
+            <!-- Quantity Section -->
+            <div class="m">
+                <label for="quantity" class="form-label">Quantity</label>
+                <input type="number" id="quantity" name="quantity" value="" onchange="validatequantity()" />
+                <span id="quantityError" class="error"></span>
+            </div>
+
+
+
+
+
+            <!-- Income Section -->
+            <div class="m">
+                <label for="income" class="form-label">Income</label>
+                <input type="number" id="income" name="income" value="" onchange="validateincome()" />
+                <span id="incomeError" class="error"></span>
+            </div>
+
+
+
+
+
+            <!-- Phone Section -->
+            <div class="m">
+                <label for="phone" class="form-label">Phone Number</label>
+                <input type="tel" id="phone" name="phone">
+                <span id="phoneError" class="error"></span>
+            </div>
+
+
+
+
+            <!-- Gender Section -->
+            <div class="m">
+                <label class="form-label">Gender</label>
+                <div>
+                    <input type="radio" id="male" name="gender" value="male" onclick="validateGender()" />
+                    <label for="male">Male</label>
+                </div>
+                <div>
+                    <input type="radio" id="female" name="gender" value="female" onclick="validateGender()" />
+                    <label for="female">Female</label>
+                </div>
+                <span id="genderError" class="error"></span>
+            </div>
+
+
+
+
+            <!-- Interests -->
+            <div class="m">
+                <label class="form-label">Interests</label>
+                <div>
+                    <input type="checkbox" id="cooking" name="interests" value="cooking" />
+                    <label for="cooking">Cooking</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="baking" name="interests" value="baking" />
+                    <label for="baking">Baking</label>
+                </div>
+                <span id="interestsError" class="error"></span>
+            </div>
+
+
+
+
+            <!-- Submit Button -->
+            <div>
+                <button type="button" onclick="submitForm()">Submit</button>
+            </div>
+        </form>
+        <textarea name="" id="all" rows="10" cols="50"></textarea>
+    </div>
+</body>
+</html>

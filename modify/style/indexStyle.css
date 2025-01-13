@@ -1,0 +1,141 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+
+
+p {
+  font-size: 1rem;
+  margin: 10px 0;
+  font-weight: bold;
+}
+/* Navbar Styling */
+.navbar {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center; 
+  background-color: #f4f4f4; /* لون خلفية الشريط */
+  padding: 10px 20px; /* Padding ملون */
+  border-bottom: 2px solid #ddd; /* إضافة حد سفلي */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+}
+
+/* Logo Styling */
+.logo a {
+  text-decoration: none; /* إزالة الخط السفلي */
+  font-size: 1.8rem; /* حجم كبير للعنوان */
+  color: #000; /* لون أسود غامق */
+  font-weight: bold; /* نص عريض */
+}
+
+/* Links Container */
+.nav-links {
+  list-style-type: none; /* إزالة النقاط */
+  display: flex; /* توزيع الروابط أفقيًا */
+  margin: 0;
+  padding: 0;
+}
+
+/* Link Items */
+.nav-links li {
+  margin: 0 15px; /* مسافة بين الروابط */
+  
+}
+
+/* Link Styling */
+.nav-links a {
+  text-decoration: none; /* إزالة الخط السفلي */
+  color: #555; /* لون رمادي غامق للروابط */
+  font-size: 1rem; /* حجم الخط */
+  font-weight: 500;
+  padding: 5px 10px; /* Padding حول النص */
+}
+
+/* Link Hover Effect */
+.nav-links a:hover {
+  background-color: #4CAF50; /* خلفية خضراء عند التمرير */
+  color: #fff; /* نص أبيض */
+  border-radius: 5px; /* استدارة خفيفة للخلفية */
+}
+
+/* Responsive Navbar */
+ 
+  .navbar {
+    flex-direction: row; /* جعل العناصر تتراص عموديًا */
+    text-align: center; /* محاذاة وسطية */
+  }
+  
+  .nav-links {
+    flex-direction: row; /* ترتيب الروابط عموديًا */
+  }
+
+  .nav-links li {
+    margin: 10px 0; /* مسافة بين العناصر */
+  }
+
+
+/* Clearfix - Content Section */
+.clearfix {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  margin: 20px;
+  background-color: #f4f4f4; /* لون خفيف */
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Text Section */
+.major {
+  max-width: 50%;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.major h1 {
+  margin-bottom: 20px;
+}
+
+.major p {
+  color: #666;
+}
+
+/* Image Section */
+.pic1 {
+  max-width: 50%;
+}
+
+.pic1 img {
+  width: 100%;
+  height: auto; 
+  border-radius: 10px;
+  border: 2px solid #eee;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .clearfix {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .major,.pic1 {
+    max-width: 100%;
+  }
+
+  .major {
+    margin-bottom: 20px;
+  }
+}
